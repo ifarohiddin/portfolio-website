@@ -1,0 +1,4 @@
+# Netlify: serve the raw files directly — no build step.
+[build]
+  publish = "."
+  command = ""

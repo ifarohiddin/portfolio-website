@@ -1,449 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-en="Farohiddin Isomidinov - Portfolio" data-ru="Фарохиддин Исомидионов - Портфолио"
-    data-uz="Farohiddin Isomidinov - Portfolio">Farohiddin Isomidinov - Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Farohiddin Isomidinov — ML/AI Engineer. Computer Vision, RAG & Agentic AI, end-to-end ML pipelines." />
+  <title>Farohiddin Isomidinov · ML/AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 
+  <!-- Three.js r160 via CDN (no build step) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+</head>
 <body>
+  <!-- Background FX -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container nav">
-      <a href="#" class="brand">Farohiddin<span>.</span></a>
+      <a href="#home" class="brand">F<span>.</span>I</a>
       <nav id="nav">
-        <a href="#about" data-en="About" data-ru="Обо мне" data-uz="Men haqimda">About</a>
-        <a href="#skills" data-en="Skills" data-ru="Навыки" data-uz="Ko'nikmalar">Skills</a>
-        <a href="#experience" data-en="Experience" data-ru="Опыт" data-uz="Tajriba">Experience</a>
-        <a href="#projects" data-en="Projects" data-ru="Проекты" data-uz="Loyihalar">Projects</a>
-        <a href="#education" data-en="Education" data-ru="Образование" data-uz="Ta'lim">Education</a>
-        <a href="#contact" data-en="Contact" data-ru="Контакты" data-uz="Aloqa">Contact</a>
+        <a href="#home" class="active" data-en="Home" data-uz="Bosh sahifa">Home</a>
+        <a href="#about" data-en="About" data-uz="Men haqimda">About</a>
+        <a href="#experience" data-en="Experience" data-uz="Tajriba">Experience</a>
+        <a href="#projects" data-en="Projects" data-uz="Loyihalar">Projects</a>
+        <a href="#skills" data-en="Skills" data-uz="Ko'nikmalar">Skills</a>
+        <a href="#contact" data-en="Contact" data-uz="Aloqa">Contact</a>
       </nav>
       <div class="header-controls">
-        <select id="langToggle">
-          <option value="en">English</option>
-          <option value="ru">Русский</option>
-          <option value="uz">O'zbekcha</option>
+        <select id="langToggle" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="uz">UZ</option>
         </select>
-        <button id="themeToggle">☾</button>
+        <button id="themeToggle" aria-label="Toggle theme">🌙</button>
       </div>
-      <button id="hamburger" class="hamburger">
+      <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <!-- 3D neural network background (Three.js) -->
+      <canvas id="neural-canvas" aria-hidden="true"></canvas>
+      <!-- Static gradient shown if WebGL is unavailable -->
+      <div class="canvas-fallback" aria-hidden="true"></div>
       <div class="container hero-grid">
-        <div>
-          <div class="eyebrow" data-en="Data Science · AI · Robotics" data-ru="Наука о данных · ИИ · Робототехника"
-            data-uz="Ma'lumotlar Fanasi · AI · Robototexnika">Data Science · AI · Robotics</div>
-          <h1 data-en="Hi, I’m Farohiddin Isomidinov" data-ru="Привет, я Фарохиддин Исомидионов"
-            data-uz="Salom, men Farohiddin Isomidinovman">Hi, I’m Farohiddin <span>Isomidinov</span></h1>
-          <p class="subtitle"
-            data-en="Motivated Data Scientist with strong knowledge in Machine Learning, Data Analysis, and Artificial Intelligence. I build predictive models, analyze complex datasets, and apply AI to real-world problems."
-            data-ru="Мотивированный специалист по науке о данных с глубокими знаниями в машинном обучении, анализе данных и искусственном интеллекте. Я создаю предсказательные модели, анализирую сложные наборы данных и применяю ИИ к реальным задачам."
-            data-uz="Motivatsiyali ma'lumotlar olimi, mashinaviy o'qitish, ma'lumotlarni tahlil qilish va sun'iy intellekt bo'yicha chuqur bilimlarga ega. Men bashoratli modellarni yarataman, murakkab ma'lumotlar to'plamlarini tahlil qilaman va AIni real dunyo muammolariga qo'llayman.">
-            Motivated Data Scientist with strong knowledge in Machine Learning, Data Analysis, and Artificial
-            Intelligence. I build predictive models, analyze complex datasets, and apply AI to real-world problems.</p>
+        <div class="hero-text">
+          <span class="eyebrow" data-en="Available for opportunities" data-uz="Ish takliflariga ochiq">Available for opportunities</span>
+          <h1>
+            <span data-en="Farohiddin" data-uz="Farohiddin">Farohiddin</span><br />
+            Isomidinov
+          </h1>
+          <p class="role" data-en="ML / AI Engineer" data-uz="ML / AI muhandisi">ML / AI Engineer</p>
+          <p class="subtitle" data-en="I build end-to-end ML pipelines, computer vision systems, and RAG & agentic AI solutions. Currently engineering audio & vision models at NeuralHub Lab." data-uz="Men end-to-end ML pipeline'lar, computer vision tizimlari hamda RAG va agentic AI yechimlarini quraman. Hozir NeuralHub Lab'da audio va vision modellari ustida ishlayapman.">I build end-to-end ML pipelines, computer vision systems, and RAG &amp; agentic AI solutions. Currently engineering audio &amp; vision models at NeuralHub Lab.</p>
           <div class="cta-group">
-            <a href="#projects" class="btn primary" data-en="View Projects" data-ru="Посмотреть проекты"
-              data-uz="Loyihalarni ko'rish">View Projects</a>
-            <a href="assets/files/Isomidinov_Farohiddin_CV.docx" class="btn outline" download data-en="Download CV"
-              data-ru="Скачать резюме" data-uz="CVni yuklab olish">Download CV</a>
-            <a href="https://www.linkedin.com/in/farohiddin/" class="btn ghost" target="_blank" data-en="LinkedIn ↗"
-              data-ru="LinkedIn ↗" data-uz="LinkedIn ↗">LinkedIn ↗</a>
+            <a href="#projects" class="btn primary" data-en="View Projects" data-uz="Loyihalarni ko'rish">View Projects</a>
+            <a href="#contact" class="btn outline" data-en="Get in Touch" data-uz="Bog'lanish">Get in Touch</a>
           </div>
           <ul class="quick-facts">
-            <li data-en="Based: Uzbekistan" data-ru="Местоположение: Узбекистан" data-uz="Joylashuvi: O'zbekiston">
-              Based: Uzbekistan</li>
-            <li data-en="Role: AI Developer · Data Scientist" data-ru="Роль: Разработчик ИИ · Специалист по данным"
-              data-uz="Roli: AI ishlab chiquvchi · Ma'lumotlar olimi">Role: AI Developer · Data Scientist</li>
-            <li data-en="Phone: +998 94 2809098" data-ru="Телефон: +998 94 2809098" data-uz="Telefon: +998 94 2809098">
-              Phone: +998 94 2809098</li>
+            <li data-en="📍 Tashkent, Uzbekistan" data-uz="📍 Toshkent, O'zbekiston">📍 Tashkent, Uzbekistan</li>
+            <li data-en="🎓 PDP University" data-uz="🎓 PDP University">🎓 PDP University</li>
+            <li data-en="🌐 English B2" data-uz="🌐 Ingliz tili B2">🌐 English B2</li>
           </ul>
         </div>
-        <div class="hero-card">
+        <aside class="hero-card">
           <div class="stats">
             <div class="stat">
-              <div class="stat-num" data-count="10">10+</div>
-              <div class="stat-label" data-en="AI/ML Projects" data-ru="Проекты ИИ/МЛ" data-uz="AI/ML loyihalari">AI/ML
-                Projects</div>
+              <div class="stat-num" data-count="1">0</div>
+              <div class="stat-label" data-en="Years Exp" data-uz="Yil tajriba">Years Exp</div>
             </div>
             <div class="stat">
-              <div class="stat-num" data-count="90">90%+</div>
-              <div class="stat-label" data-en="CNN Accuracy" data-ru="Точность CNN" data-uz="CNN aniqligi">CNN Accuracy
-              </div>
+              <div class="stat-num" data-count="10">0</div>
+              <div class="stat-label" data-en="Projects" data-uz="Loyihalar">Projects</div>
             </div>
             <div class="stat">
-              <div class="stat-num" data-count="3">3+</div>
-              <div class="stat-label" data-en="Teaching Areas" data-ru="Области преподавания"
-                data-uz="O'qitish sohalari">Teaching Areas</div>
+              <div class="stat-num" data-count="6">0</div>
+              <div class="stat-label" data-en="ML Tools" data-uz="ML vositalar">ML Tools</div>
             </div>
           </div>
-          <p class="card-note" data-en="Open to internships & freelance roles."
-            data-ru="Открыт для стажировок и фриланс-ролей." data-uz="Stajirovka va frilans rollariga ochiqman.">Open to
-            internships & freelance roles.</p>
-        </div>
+          <p class="card-note" data-en="// ML · Computer Vision · RAG" data-uz="// ML · Computer Vision · RAG">// ML · Computer Vision · RAG</p>
+        </aside>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="container two-col">
-        <div>
-          <h2 data-en="About" data-ru="Обо мне" data-uz="Men haqimda">About</h2>
-          <p data-en="I’m an AI student at PDP University (Artificial Intelligence Applications and Solutions) with hands-on experience teaching robotics to kids and building machine learning systems—from data cleaning to model deployment."
-            data-ru="Я студент ИИ в Университете PDP (Приложения и решения искусственного интеллекта) с практическим опытом преподавания робототехники детям и создания систем машинного обучения — от очистки данных до развертывания моделей."
-            data-uz="Men PDP Universitetida (Sun'iy intellekt ilovalari va yechimlari) AI talabasiman, bolalarga robototexnikani o'qitish va mashinaviy o'qitish tizimlarini yaratish bo'yicha amaliy tajribaga egaman — ma'lumotlarni tozalashdan tortib modellarini joylashtirishgacha.">
-            I’m an AI student at PDP University (Artificial Intelligence Applications and Solutions) with hands-on
-            experience teaching robotics to kids and building machine learning systems—from data cleaning to model
-            deployment.</p>
-          <p data-en="Recently, I developed a CNN-based medical image classifier (TensorFlow) and deployed it as a REST API using FastAPI. I enjoy turning raw data into useful tools with clear, visual results."
-            data-ru="Недавно я разработал классификатор медицинских изображений на основе CNN (TensorFlow) и развернул его как REST API с использованием FastAPI. Мне нравится превращать необработанные данные в полезные инструменты с четкими визуальными результатами."
-            data-uz="Yaqinda men CNN-ga asoslangan tibbiy tasvir klassifikatorini (TensorFlow) ishlab chiqdim va uni FastAPI yordamida REST API sifatida joylashtirdim. Menga xom ma'lumotlarni aniq vizual natijalarga ega foydali vositalarga aylantirish juda yoqadi.">
-            Recently, I developed a CNN-based medical image classifier (TensorFlow) and deployed it as a REST API using
-            FastAPI. I enjoy turning raw data into useful tools with clear, visual results.</p>
-          <div class="highlights">
-            <h3 data-en="Highlights" data-ru="Достижения" data-uz="Yutuqlar">Highlights</h3>
-            <ul>
-              <li data-en="CNN-based medical image classifier with 90%+ accuracy"
-                data-ru="Классификатор медицинских изображений на основе CNN с точностью более 90%"
-                data-uz="90%dan yuqori aniqlikka ega CNN-ga asoslangan tibbiy tasvir klassifikatori">CNN-based medical
-                image classifier with 90%+ accuracy</li>
-              <li data-en="Deployed ML model as a FastAPI service" data-ru="Развернутая модель ML как служба FastAPI"
-                data-uz="FastAPI xizmati sifatida joylashtirilgan ML modeli">Deployed ML model as a FastAPI service</li>
-              <li data-en="Robotics teaching: Scratch, Arduino, sensors"
-                data-ru="Преподавание робототехники: Scratch, Arduino, датчики"
-                data-uz="Robototexnika o'qitish: Scratch, Arduino, sensorlar">Robotics teaching: Scratch, Arduino,
-                sensors</li>
-              <li data-en="Data analysis with Bitrix, Excel, and Python"
-                data-ru="Анализ данных с использованием Bitrix, Excel и Python"
-                data-uz="Bitrix, Excel va Python yordamida ma'lumotlarni tahlil qilish">Data analysis with Bitrix,
-                Excel, and Python</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <img src="assets/images/profile.jpg" alt="Farohiddin Isomidinov"
-            style="width: 100%; border-radius: 1rem; border: 1px solid var(--border);">
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="section">
+    <!-- ABOUT -->
+    <section class="section" id="about">
       <div class="container">
-        <h2 data-en="Skills" data-ru="Навыки" data-uz="Ko'nikmalar">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <h3 data-en="Mops & Deployment" data-ru="MLOps и Развертывание" data-uz="MLOps va Joylash">MLOps &
-              Deployment</h3>
-            <ul class="tags">
-              <li>Python</li>
-              <li>FastAPI</li>
-              <li>Docker</li>
-              <li>Git</li>
-              <li>Linux</li>
-              <li>REST APIs</li>
-            </ul>
+        <h2 data-en="About" data-uz="Men haqimda">About</h2>
+        <div class="two-col">
+          <div class="about-body">
+            <p data-en="I'm an ML/AI Engineer studying Artificial Intelligence & Intelligent Systems at PDP University (graduating 2027). My work spans computer vision, audio data processing, and building production ML pipelines from data collection to deployment." data-uz="Men ML/AI muhandisiman, PDP University'da Sun'iy intellekt va Intellektual tizimlar yo'nalishida tahsil olaman (2027-yil bitiruv). Ishim computer vision, audio ma'lumotlarni qayta ishlash va ma'lumot yig'ishdan deploymentgacha bo'lgan ML pipeline'larni qamrab oladi.">I'm an ML/AI Engineer studying Artificial Intelligence &amp; Intelligent Systems at PDP University (graduating 2027). My work spans computer vision, audio data processing, and building production ML pipelines from data collection to deployment.</p>
+            <p data-en="I'm also building NeuralHub — an AI-focused brand based in Tashkent — and I'm passionate about creative AI media, edge AI, and teaching the next generation of engineers." data-uz="Shuningdek, men NeuralHub — Toshkentda joylashgan AI'ga yo'naltirilgan brendni quryapman — va kreativ AI media, edge AI hamda yangi avlod muhandislarini o'qitishga qiziqaman.">I'm also building NeuralHub — an AI-focused brand based in Tashkent — and I'm passionate about creative AI media, edge AI, and teaching the next generation of engineers.</p>
+            <div class="highlights">
+              <h3 data-en="What I focus on" data-uz="Nimaga e'tibor beraman">What I focus on</h3>
+              <ul>
+                <li data-en="STT/TTS & audio data: denoising, segmentation, normalization" data-uz="STT/TTS va audio: shovqindan tozalash, segmentatsiya, normalizatsiya">STT/TTS &amp; audio data: denoising, segmentation, normalization</li>
+                <li data-en="Computer vision: pose detection & object tracking" data-uz="Computer vision: pose detection va object tracking">Computer vision: pose detection &amp; object tracking</li>
+                <li data-en="AI agents, Agentic AI & RAG systems" data-uz="AI agentlar, Agentic AI va RAG tizimlari">AI agents, Agentic AI &amp; RAG systems</li>
+                <li data-en="End-to-end ML pipelines & model optimization" data-uz="End-to-end ML pipeline'lar va model optimizatsiyasi">End-to-end ML pipelines &amp; model optimization</li>
+              </ul>
+            </div>
           </div>
-          <div class="skill-card">
-            <h3 data-en="AI & Deep Learning" data-ru="ИИ и Глубокое обучение" data-uz="AI va Chuqur o'qitish">AI & Deep
-              Learning
-            </h3>
-            <ul class="tags">
-              <li>TensorFlow</li>
-              <li>PyTorch</li>
-              <li>Scikit-learn</li>
-              <li>OpenCV</li>
-              <li>NLP</li>
-              <li>Computer Vision</li>
+          <aside class="edu-card info-side">
+            <h3 data-en="Quick Info" data-uz="Qisqacha">Quick Info</h3>
+            <ul class="info-list">
+              <li><span data-en="Role" data-uz="Lavozim">Role</span><b>ML/AI Engineer</b></li>
+              <li><span data-en="Company" data-uz="Kompaniya">Company</span><b>NeuralHub Lab</b></li>
+              <li><span data-en="Education" data-uz="Ta'lim">Education</span><b>PDP University</b></li>
+              <li><span data-en="Languages" data-uz="Tillar">Languages</span><b>Uzbek, English B2</b></li>
+              <li><span data-en="Status" data-uz="Holat">Status</span><b class="status-open" data-en="Open to work" data-uz="Ishga ochiq">Open to work</b></li>
             </ul>
-          </div>
-          <div class="skill-card">
-            <h3 data-en="Data Engineering" data-ru="Инженерия данных" data-uz="Ma'lumotlar muhandisligi">Data
-              Engineering
-            </h3>
-            <ul class="tags">
-              <li>SQL</li>
-              <li>Pandas</li>
-              <li>NumPy</li>
-              <li>Matplotlib</li>
-              <li>Seaborn</li>
-            </ul>
-          </div>
-
-
-          <div class="skill-card">
-            <h3 data-en="Robotics" data-ru="Робототехника" data-uz="Robototexnika">Robotics</h3>
-            <ul class="tags">
-              <li>Arduino</li>
-              <li>Sensors & IoT</li>
-            </ul>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
 
-    <section id="experience" class="section">
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
       <div class="container">
-        <h2 data-en="Experience" data-ru="Опыт" data-uz="Tajriba">Experience</h2>
+        <h2 data-en="Experience" data-uz="Tajriba">Experience</h2>
         <div class="timeline">
           <div class="tl-item">
             <div class="tl-dot"></div>
             <div class="tl-header">
-              <h3 data-en="Robotics Teacher — PDP Junior" data-ru="Учитель робототехники — PDP Junior"
-                data-uz="Robototexnika o'qituvchisi — PDP Junior">Robotics Teacher — PDP Junior</h3>
-              <div class="tl-time">2025</div>
+              <h3>ML / AI Engineer</h3>
+              <span class="tl-org">NeuralHub Lab</span>
+              <span class="tl-time">Mar 2026 — <span data-en="Present" data-uz="Hozirgacha">Present</span></span>
             </div>
             <ul class="bullets">
-              <li data-en="Taught fundamentals of robotics, programming, and electronics through projects."
-                data-ru="Преподавал основы робототехники, программирования и электроники через проекты."
-                data-uz="Loyihalar orqali robototexnika, dasturlash va elektronika asoslarini o'rgatdim.">Taught
-                fundamentals of robotics, programming, and electronics through projects.</li>
-              <li data-en="Practical lessons with Scratch, Arduino, and sensors."
-                data-ru="Практические занятия с использованием Scratch, Arduino и датчиков."
-                data-uz="Scratch, Arduino va sensorlar bilan amaliy darslar o'tkazdim.">Practical lessons with Scratch,
-                Arduino, and sensors.</li>
-              <li data-en="Built students’ problem-solving and creativity."
-                data-ru="Развивал у студентов навыки решения проблем и креативность."
-                data-uz="O'quvchilarning muammo hal qilish va ijodkorlik qobiliyatlarini rivojlantirdim.">Built
-                students’ problem-solving and creativity.</li>
+              <li data-en="Collect, label & analyze data for STT/TTS models." data-uz="STT/TTS modellari uchun ma'lumot yig'ish, belgilash va tahlil qilish.">Collect, label &amp; analyze data for STT/TTS models.</li>
+              <li data-en="Audio preprocessing: denoising, segmentation, normalization." data-uz="Audio tayyorlash: shovqindan tozalash, segmentatsiya, normalizatsiya.">Audio preprocessing: denoising, segmentation, normalization.</li>
+              <li data-en="Build AI agents, Agentic AI & RAG systems for automated request handling." data-uz="So'rovlarni avtomatik qayta ishlash uchun AI agentlar, Agentic AI va RAG tizimlarini ishlab chiqish.">Build AI agents, Agentic AI &amp; RAG systems for automated request handling.</li>
+              <li data-en="Deploy pose detection & object tracking with computer vision." data-uz="Computer vision asosida pose detection va object tracking joriy etish.">Deploy pose detection &amp; object tracking with computer vision.</li>
+              <li data-en="Train & optimize ML models and build end-to-end pipelines." data-uz="ML modellarni o'qitish, optimallashtirish va end-to-end pipeline qurish.">Train &amp; optimize ML models and build end-to-end pipelines.</li>
             </ul>
           </div>
           <div class="tl-item">
             <div class="tl-dot"></div>
             <div class="tl-header">
-              <h3 data-en="AI Developer (Project-Based) — Medical Image Classifier"
-                data-ru="Разработчик ИИ (по проектам) — Классификатор медицинских изображений"
-                data-uz="AI ishlab chiquvchi (loyihaviy) — Tibbiy tasvir klassifikatori">AI Developer (Project-Based) —
-                Medical Image Classifier</h3>
-              <div class="tl-time">Mar 2025</div>
+              <h3 data-en="Robotics / IoT Instructor" data-uz="Robototexnika / IoT o'qituvchisi">Robotics / IoT Instructor</h3>
+              <span class="tl-org">PDP Junior</span>
+              <span class="tl-time">May 2025 — <span data-en="Present" data-uz="Hozirgacha">Present</span></span>
             </div>
             <ul class="bullets">
-              <li data-en="Built CNN model to detect anomalies (90%+ accuracy)."
-                data-ru="Создал модель CNN для обнаружения аномалий (точность более 90%)."
-                data-uz="Anomalialarni aniqlash uchun CNN modelini yaratdim (90%dan yuqori aniqlik).">Built CNN model to
-                detect anomalies (90%+ accuracy).</li>
-              <li data-en="Image preprocessing & augmentation with OpenCV."
-                data-ru="Предобработка и аугментация изображений с использованием OpenCV."
-                data-uz="OpenCV yordamida tasvirlarni oldindan qayta ishlash va kengaytirish.">Image preprocessing &
-                augmentation with OpenCV.</li>
-              <li data-en="Training with TensorFlow; results dashboard."
-                data-ru="Обучение с использованием TensorFlow; дашборд результатов."
-                data-uz="TensorFlow yordamida o'qitish; natijalar paneli.">Training with TensorFlow; results dashboard.
-              </li>
-              <li data-en="Deployed as REST API with FastAPI."
-                data-ru="Развернуто как REST API с использованием FastAPI."
-                data-uz="FastAPI yordamida REST API sifatida joylashtirildi.">Deployed as REST API with FastAPI.</li>
-            </ul>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-header">
-              <h3 data-en="Junior Data Analyst — PDP University" data-ru="Младший аналитик данных — Университет PDP"
-                data-uz="Kichik ma'lumotlar analitigi — PDP Universiteti">Junior Data Analyst — PDP University</h3>
-              <div class="tl-time">Oct 2024 – Nov 2025</div>
-            </div>
-            <ul class="bullets">
-              <li data-en="Worked with student data in Bitrix." data-ru="Работал с данными студентов в Bitrix."
-                data-uz="Bitrixda talabalar ma'lumotlari bilan ishladim.">Worked with student data in Bitrix.</li>
-              <li data-en="Applied data cleaning and analysis in academic setting."
-                data-ru="Применял очистку и анализ данных в академической среде."
-                data-uz="O'quv muhitida ma'lumotlarni tozalash va tahlil qilishni qo'lladim.">Applied data cleaning and
-                analysis in academic setting.</li>
+              <li data-en="Teach electronics, Arduino & IoT through hands-on classes." data-uz="Elektronika, Arduino va IoT bo'yicha amaliy darslar olib borish.">Teach electronics, Arduino &amp; IoT through hands-on classes.</li>
+              <li data-en="Guide students in building IoT projects with sensors." data-uz="O'quvchilarga sensorlar bilan IoT loyihalarini qurishni o'rgatish.">Guide students in building IoT projects with sensors.</li>
+              <li data-en="Teach circuit assembly & microcontroller programming (C/C++)." data-uz="Sxema yig'ish va mikrokontroller dasturlashni (C/C++) o'rgatish.">Teach circuit assembly &amp; microcontroller programming (C/C++).</li>
+              <li data-en="Mentor students toward independent IoT/electronics projects." data-uz="O'quvchilarni mustaqil IoT/elektronika loyihalariga yo'naltirish.">Mentor students toward independent IoT/electronics projects.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
       <div class="container">
-        <h2 data-en="Projects" data-ru="Проекты" data-uz="Loyihalar">Projects</h2>
+        <h2 data-en="Projects" data-uz="Loyihalar">Projects</h2>
         <div class="projects-grid">
-          <div class="project-card">
-            <img src="assets/images/projects/thumb_medical.png" alt="AI-Powered Diagnostic Assistant"
-              class="project-img">
+          <article class="project-card">
             <div class="project-content">
-              <h3 data-en="AI-Powered Diagnostic Assistant" data-ru="ИИ-Ассистент диагноста"
-                data-uz="AI-ga asoslangan Diagnostika Yordamchisi">AI-Powered Diagnostic Assistant</h3>
-              <p data-en="Real-time anomaly detection system for medical imaging, deployed as a scalable REST API using TensorFlow & FastAPI."
-                data-ru="Система обнаружения аномалий в реальном времени для медицинских изображений, развернутая как масштабируемый REST API."
-                data-uz="Tibbiy tasvirlar uchun real vaqt rejimida anomaliyalarni aniqlash tizimi, TensorFlow va FastAPI yordamida.">
-                Real-time anomaly detection system for medical imaging, deployed as a scalable REST API using TensorFlow
-                & FastAPI.</p>
-              <ul class="tags">
-                <li>Computer Vision</li>
-                <li>FastAPI</li>
-                <li>Docker</li>
-              </ul>
-              <div class="project-links">
-                <a href="https://github.com/ifarohiddin/malaria_data.git" class="btn ghost" target="_blank"
-                  data-en="View Solution" data-ru="Смотреть решение" data-uz="Yechimni ko'rish">View Solution</a>
-              </div>
+              <span class="proj-cat">RAG · NLP</span>
+              <h3>RAG Customer Support</h3>
+              <p data-en="AI support system using retrieval-augmented generation to answer queries from a knowledge base with grounded, accurate responses." data-uz="Bilimlar bazasidan aniq va asoslangan javoblar beruvchi, retrieval-augmented generation asosidagi AI qo'llab-quvvatlash tizimi.">AI support system using retrieval-augmented generation to answer queries from a knowledge base with grounded, accurate responses.</p>
+              <ul class="tags"><li>Python</li><li>RAG</li><li>LLM</li></ul>
             </div>
+          </article>
+          <article class="project-card">
+            <div class="project-content">
+              <span class="proj-cat">Computer Vision</span>
+              <h3>BusGuard Pro</h3>
+              <p data-en="Bus fare-enforcement system using YOLOv8 + DeepFace for detection, with a FastAPI backend and React dashboard." data-uz="YOLOv8 + DeepFace asosida aniqlash, FastAPI backend va React dashboard bilan ishlovchi avtobus chipta nazorati tizimi.">Bus fare-enforcement system using YOLOv8 + DeepFace for detection, with a FastAPI backend and React dashboard.</p>
+              <ul class="tags"><li>YOLOv8</li><li>OpenCV</li><li>FastAPI</li></ul>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-content">
+              <span class="proj-cat">Generative AI</span>
+              <h3>AI Art Pipeline</h3>
+              <p data-en="ComfyUI-based image & video generation workflows (DreamShaper, Realistic Vision, Wan2.1) for cinematic creative media." data-uz="Kinematik kreativ media uchun ComfyUI asosidagi rasm va video generatsiya workflow'lari (DreamShaper, Realistic Vision, Wan2.1).">ComfyUI-based image &amp; video generation workflows (DreamShaper, Realistic Vision, Wan2.1) for cinematic creative media.</p>
+              <ul class="tags"><li>ComfyUI</li><li>Diffusion</li><li>T2V</li></ul>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-content">
+              <span class="proj-cat">Full-Stack</span>
+              <h3>DehqonMarket</h3>
+              <p data-en="A farm-to-table marketplace connecting farmers to buyers — built with Next.js 14, FastAPI, PostgreSQL and Docker Compose." data-uz="Dehqonlarni xaridorlar bilan bog'lovchi farm-to-table marketplace — Next.js 14, FastAPI, PostgreSQL va Docker Compose'da qurilgan.">A farm-to-table marketplace connecting farmers to buyers — built with Next.js 14, FastAPI, PostgreSQL and Docker Compose.</p>
+              <ul class="tags"><li>Next.js</li><li>FastAPI</li><li>PostgreSQL</li></ul>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-content">
+              <span class="proj-cat">Computer Vision</span>
+              <h3>Hand-Tracking 3D Draw</h3>
+              <p data-en="Draw in 3D space using hand gestures — MediaPipe for tracking, Open3D for rendering, OpenCV for the vision pipeline." data-uz="Qo'l harakatlari orqali 3D fazoda chizish — kuzatish uchun MediaPipe, render uchun Open3D, vision pipeline uchun OpenCV.">Draw in 3D space using hand gestures — MediaPipe for tracking, Open3D for rendering, OpenCV for the vision pipeline.</p>
+              <ul class="tags"><li>MediaPipe</li><li>Open3D</li><li>OpenCV</li></ul>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-content">
+              <span class="proj-cat">Data · BI</span>
+              <h3>BI Dashboard</h3>
+              <p data-en="Power BI dashboard on the Adventure Works dataset with real KPIs and DAX measures for sales and performance analytics." data-uz="Adventure Works dataseti asosida real KPI va DAX measure'lar bilan sotuv va samaradorlik tahlili uchun Power BI dashboard.">Power BI dashboard on the Adventure Works dataset with real KPIs and DAX measures for sales and performance analytics.</p>
+              <ul class="tags"><li>Power BI</li><li>DAX</li><li>SQL</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
+        <h2 data-en="Skills" data-uz="Ko'nikmalar">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3 data-en="Languages & Core" data-uz="Tillar va asos">Languages &amp; Core</h3>
+            <ul class="tags"><li>Python</li><li>SQL</li><li>C/C++</li><li>Git</li></ul>
           </div>
-          <div class="project-card">
-            <img src="assets/images/projects/thumb_oncology.png" alt="Oncology Diagnostic Support" class="project-img">
-            <div class="project-content">
-              <h3 data-en="Oncology Diagnostic Support" data-ru="Поддержка онкологической диагностики"
-                data-uz="Onkologik Diagnostika Tizimi">Oncology Diagnostic Support</h3>
-              <p data-en="High-precision classification model optimized for Recall to minimize false negatives in cancer detection."
-                data-ru="Высокоточная модель классификации, оптимизированная по Recall для минимизации ложноотрицательных результатов."
-                data-uz="Saratonni aniqlashda xatolarni kamaytirish uchun Recall bo'yicha optimallashtirilgan yuqori aniqlikdagi model.">
-                High-precision classification model optimized for Recall to minimize false negatives in cancer
-                detection.</p>
-              <ul class="tags">
-                <li>Scikit-learn</li>
-                <li>Medical AI</li>
-              </ul>
-              <div class="project-links">
-                <a href="#" class="btn ghost" target="_blank" data-en="View Solution" data-ru="Смотреть решение"
-                  data-uz="Yechimni ko'rish">View Solution</a>
-              </div>
-            </div>
+          <div class="skill-card">
+            <h3>ML / AI</h3>
+            <ul class="tags"><li>PyTorch</li><li>Scikit-learn</li><li>CatBoost</li><li>XGBoost</li><li>LightGBM</li><li>RAG</li><li>Agentic AI</li><li>Computer Vision</li></ul>
           </div>
-          <div class="project-card">
-            <img src="assets/images/projects/thumb_survival.png" alt="Passenger Survival Analytics" class="project-img">
-            <div class="project-content">
-              <h3 data-en="Passenger Survival Analytics" data-ru="Аналитика выживаемости пассажиров"
-                data-uz="Yo'lovchilar Omon Qolish Tahlili">Passenger Survival Analytics</h3>
-              <p data-en="Predictive risk modeling pipeline using Ensemble methods (RandomForest, GradientBoosting) for complex datasets."
-                data-ru="Пайплайн прогностического моделирования рисков с использованием ансамблевых методов."
-                data-uz="Murakkab ma'lumotlar to'plamlari uchun ansambl usullaridan foydalangan holda xatarlarni bashorat qilish.">
-                Predictive risk modeling pipeline using Ensemble methods (RandomForest, GradientBoosting) for complex
-                datasets.</p>
-              <ul class="tags">
-                <li>Ensemble Learning</li>
-                <li>Pandas</li>
-              </ul>
-              <div class="project-links">
-                <a href="#" class="btn ghost" target="_blank" data-en="View Solution" data-ru="Смотреть решение"
-                  data-uz="Yechimni ko'rish">View Solution</a>
-              </div>
-            </div>
+          <div class="skill-card">
+            <h3 data-en="Data" data-uz="Ma'lumotlar">Data</h3>
+            <ul class="tags"><li>PostgreSQL</li><li>Data Analysis</li><li>Visualization</li><li>Power BI</li></ul>
           </div>
-          <div class="project-card">
-            <img src="assets/images/projects/thumb_financial.png" alt="Financial Credit Risk Model" class="project-img">
-            <div class="project-content">
-              <h3 data-en="Financial Credit Risk Model" data-ru="Модель кредитного риска"
-                data-uz="Moliyaviy Xatar Modeli">
-                Financial Credit Risk Model</h3>
-              <p data-en="Deep Learning system utilizing FastAI to predict loan defaults and optimize financial decision-making processes."
-                data-ru="Система глубокого обучения с использованием FastAI для прогнозирования дефолтов по кредитам."
-                data-uz="Kredit to'lovlarini bashorat qilish va moliyaviy qarorlarni optimallashtirish uchun chuqur o'qitish tizimi.">
-                Deep Learning system utilizing FastAI to predict loan defaults and optimize financial decision-making
-                processes.</p>
-              <ul class="tags">
-                <li>FastAI</li>
-                <li>Deep Learning</li>
-              </ul>
-              <div class="project-links">
-                <a href="#" class="btn ghost" target="_blank" data-en="View Solution" data-ru="Смотреть решение"
-                  data-uz="Yechimni ko'rish">View Solution</a>
-              </div>
-            </div>
-          </div>
-          <div class="project-card">
-            <img src="assets/images/projects/thumb_clinical.png" alt="Clinical Predictive System" class="project-img">
-            <div class="project-content">
-              <h3 data-en="Clinical Predictive System" data-ru="Клиническая прогностическая система"
-                data-uz="Klinik Bashorat Tizimi">Clinical Predictive System</h3>
-              <p data-en="Optimized classification pipeline for early disease markers using rigorous Hyperparameter Tuning (GridSearchCV)."
-                data-ru="Оптимизированный пайплайн классификации для ранних маркеров заболеваний."
-                data-uz="Kasallik belgilarini erta aniqlash uchun optimallashtirilgan tasniflash tizimi.">
-                Optimized classification pipeline for early disease markers using rigorous Hyperparameter Tuning
-                (GridSearchCV).</p>
-              <ul class="tags">
-                <li>Optimization</li>
-                <li>Predictive Analytics</li>
-              </ul>
-              <div class="project-links">
-                <a href="#" class="btn ghost" target="_blank" data-en="View Solution" data-ru="Смотреть решение"
-                  data-uz="Yechimni ko'rish">View Solution</a>
-              </div>
-            </div>
-          </div>
-          <div class="project-card">
-            <img src="assets/images/projects/thumb_cell.png" alt="Microscopic Cell Analysis Pipeline"
-              class="project-img">
-            <div class="project-content">
-              <h3 data-en="Microscopic Cell Analysis Pipeline" data-ru="Пайплайн анализа микроскопии"
-                data-uz="Mikroskopik Hujayra Tahlili">Microscopic Cell Analysis Pipeline</h3>
-              <p data-en="Comparative study of PyTorch CNNs vs TensorFlow architectures for high-throughput cell classification."
-                data-ru="Сравнительное исследование архитектур PyTorch CNN и TensorFlow для высокопроизводительной классификации клеток."
-                data-uz="Yuqori o'tkazuvchanlikdagi hujayra klassifikatsiyasi uchun PyTorch CNN va TensorFlow arxitekturalarini taqqoslash.">
-                Comparative study of PyTorch CNNs vs TensorFlow architectures for high-throughput cell classification.
-              </p>
-              <ul class="tags">
-                <li>PyTorch vs TF</li>
-                <li>Research</li>
-              </ul>
-              <div class="project-links">
-                <a href="#" class="btn ghost" target="_blank" data-en="View Solution" data-ru="Смотреть решение"
-                  data-uz="Yechimni ko'rish">View Solution</a>
-              </div>
-            </div>
+          <div class="skill-card">
+            <h3 data-en="Tools & Frameworks" data-uz="Vositalar">Tools &amp; Frameworks</h3>
+            <ul class="tags"><li>FastAPI</li><li>Next.js</li><li>Docker</li><li>OpenCV</li><li>MediaPipe</li><li>ComfyUI</li></ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="education" class="section">
+    <!-- CONTACT -->
+    <section class="section" id="contact">
       <div class="container">
-        <h2 data-en="Education" data-ru="Образование" data-uz="Ta'lim">Education</h2>
-        <div class="edu-grid">
-          <div class="edu-card">
-            <h3 data-en="PDP University" data-ru="Университет PDP" data-uz="PDP Universiteti">PDP University</h3>
-            <p data-en="Artificial Intelligence Applications and Solutions"
-              data-ru="Приложения и решения искусственного интеллекта"
-              data-uz="Sun'iy intellekt ilovalari va yechimlari">Artificial Intelligence Applications and Solutions</p>
-            <div class="edu-time">2023 — 2027</div>
+        <h2 data-en="Contact" data-uz="Aloqa">Contact</h2>
+        <div class="two-col">
+          <div class="contact-intro">
+            <p class="contact-lead" data-en="Let's build something intelligent." data-uz="Keling, aqlli narsa quraylik.">Let's build something intelligent.</p>
+            <p data-en="Open to ML/AI roles, freelance, and collaborations." data-uz="ML/AI ish o'rinlari, freelance va hamkorlikka ochiqman.">Open to ML/AI roles, freelance, and collaborations.</p>
+            <ul class="contact-links">
+              <li><a href="mailto:isomiddinovfarohiddin53@gmail.com">✉️ isomiddinovfarohiddin53@gmail.com</a></li>
+              <li><a href="tel:+998942809098">📞 +998 94 280 90 98</a></li>
+              <li><a href="https://t.me/ifarohiddin" target="_blank" rel="noopener">✈️ @ifarohiddin</a></li>
+              <li><a href="https://github.com/ifarohiddin" target="_blank" rel="noopener">💻 github.com/ifarohiddin</a></li>
+            </ul>
           </div>
-          <div class="edu-card">
-            <h3 data-en="PIMA Specialized School" data-ru="Специализированная школа PIMA"
-              data-uz="PIMA ixtisoslashtirilgan maktabi">PIMA Specialized School</h3>
-            <p data-en="Programming, technical subjects, and AI fundamentals"
-              data-ru="Программирование, технические предметы и основы ИИ"
-              data-uz="Dasturlash, texnik fanlar va AI asoslari">Programming, technical subjects, and AI fundamentals
-            </p>
-            <div class="edu-time">2022 — 2023</div>
-          </div>
-          <div class="edu-card">
-            <h3 data-en="School No. 26 DIMI" data-ru="Школа №26 DIMI" data-uz="26-sonli DIMI maktabi">School No. 26 DIMI
-            </h3>
-            <p data-en="Mathematics and technical sciences foundation" data-ru="Основы математики и технических наук"
-              data-uz="Matematika va texnik fanlar asoslari">Mathematics and technical sciences foundation</p>
-            <div class="edu-time">2017 — 2021</div>
-          </div>
+          <form id="contactForm" class="contact-form">
+            <input type="text" name="name" id="cf-name" placeholder="Name" data-en-ph="Name" data-uz-ph="Ism" />
+            <input type="email" name="email" id="cf-email" placeholder="Email" data-en-ph="Email" data-uz-ph="Email" />
+            <textarea name="message" id="cf-message" rows="4" placeholder="Your message" data-en-ph="Your message" data-uz-ph="Xabaringiz"></textarea>
+            <button type="submit" class="btn primary" data-en="Send Message" data-uz="Yuborish">Send Message</button>
+            <p id="formStatus" class="form-status"></p>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-grid">
-      <p data-en="© {year} Farohiddin Isomidinov. All rights reserved."
-        data-ru="© {year} Фарохиддин Исомидионов. Все права защищены."
-        data-uz="© {year} Farohiddin Isomidinov. Barcha huquqlar himoyalangan.">© <span id="year"></span> Farohiddin
-        Isomidinov. All rights reserved.</p>
+      <p>© <span id="year"></span> Farohiddin Isomidinov · ML/AI Engineer</p>
       <div class="socials">
-        <a href="https://www.linkedin.com/in/farohiddin/" target="_blank" data-en="in" data-ru="в" data-uz="in">in</a>
-        <a href="mailto:your.email@example.com" data-en="✉" data-ru="✉" data-uz="✉">✉</a>
-        <a href="tel:+998942809098" data-en="☎" data-ru="☎" data-uz="☎">☎</a>
+        <a href="https://github.com/ifarohiddin" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+        <a href="https://t.me/ifarohiddin" target="_blank" rel="noopener" aria-label="Telegram">Telegram</a>
+        <a href="https://www.instagram.com/i.farohiddin/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
       </div>
     </div>
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/scene.js"></script>
 </body>
-
 </html>

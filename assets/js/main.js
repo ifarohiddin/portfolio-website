@@ -1,4 +1,4 @@
-// Main JS for interactions
+// Farohiddin Isomidinov — Portfolio interactions
 const root = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
 const hamburger = document.getElementById('hamburger');
@@ -11,76 +11,119 @@ const langToggle = document.getElementById('langToggle');
 // Year
 yearEl.textContent = new Date().getFullYear();
 
-// Theme toggle
+// ---- Theme toggle (saved) ----
 const savedTheme = localStorage.getItem('theme') || 'dark';
-if (savedTheme === 'light') { root.classList.add('light'); }
+if (savedTheme === 'light') root.classList.add('light');
+themeToggle.textContent = root.classList.contains('light') ? '☀️' : '🌙';
 themeToggle.addEventListener('click', () => {
   root.classList.toggle('light');
-  localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+  const isLight = root.classList.contains('light');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  themeToggle.textContent = isLight ? '☀️' : '🌙';
 });
 
-// Mobile menu
+// ---- Mobile menu ----
 hamburger.addEventListener('click', () => {
   nav.classList.toggle('active');
+  hamburger.classList.toggle('active');
 });
+nav.querySelectorAll('a').forEach((a) =>
+  a.addEventListener('click', () => {
+    nav.classList.remove('active');
+    hamburger.classList.remove('active');
+  })
+);
 
-// Simple number "count-up" effect for stats
-document.querySelectorAll('.stat-num').forEach(el => {
-  const target = parseInt(el.getAttribute('data-count'), 10);
-  if (!isNaN(target)) {
-    let val = 0;
-    const step = Math.max(1, Math.floor(target / 50));
-    const timer = setInterval(() => {
-      val += step;
-      if (val >= target) { val = target; clearInterval(timer); }
-      el.textContent = el.textContent.includes('%') ? val + '%' : val + '+';
-    }, 20);
-  }
-});
-
-// Contact form (front-end only)
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const payload = Object.fromEntries(data.entries());
-
-    // rudimentary validation
-    if (!payload.name || !payload.email || !payload.message) {
-      formStatus.textContent = 'Please fill in all fields.';
-      formStatus.style.color = '#ef4444';
-      return;
-    }
-    const emailOk = /.+@.+\..+/.test(payload.email);
-    if (!emailOk) {
-      formStatus.textContent = 'Please enter a valid email.';
-      formStatus.style.color = '#ef4444';
-      return;
-    }
-
-    // success stub
-    form.reset();
-    formStatus.textContent = 'Thanks! Your message has been prepared (demo only).';
-    formStatus.style.color = '#22c55e';
-    setTimeout(() => { formStatus.textContent = ''; }, 4000);
-  });
-}
-
-// Language toggle and Persistence
+// ---- Language toggle (text + placeholders, saved) ----
 const savedLang = localStorage.getItem('lang') || 'en';
 
 function setLanguage(lang) {
-  document.querySelectorAll('[data-en]').forEach(element => {
-    element.textContent = element.getAttribute(`data-${lang}`) || element.getAttribute('data-en');
+  document.querySelectorAll('[data-en]').forEach((el) => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.textContent = val;
+  });
+  document.querySelectorAll('[data-en-ph]').forEach((el) => {
+    const ph = el.getAttribute('data-' + lang + '-ph');
+    if (ph !== null) el.setAttribute('placeholder', ph);
   });
   document.documentElement.lang = lang;
   langToggle.value = lang;
   localStorage.setItem('lang', lang);
 }
-
-// Initialize language
 setLanguage(savedLang);
+langToggle.addEventListener('change', (e) => setLanguage(e.target.value));
 
-langToggle.addEventListener('change', (e) => {
-  setLanguage(e.target.value);
-});
+// ---- Count-up stats (runs once on view) ----
+function runCount(el) {
+  const target = parseInt(el.getAttribute('data-count'), 10);
+  if (isNaN(target)) return;
+  let val = 0;
+  const step = Math.max(1, Math.ceil(target / 40));
+  const timer = setInterval(() => {
+    val += step;
+    if (val >= target) { val = target; clearInterval(timer); }
+    el.textContent = val + '+';
+  }, 30);
+}
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) { runCount(e.target); statObserver.unobserve(e.target); }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num').forEach((el) => statObserver.observe(el));
+
+// ---- Scrollspy (active nav link) ----
+const sections = document.querySelectorAll('section[id]');
+const navLinks = nav.querySelectorAll('a');
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      navLinks.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+}, { threshold: 0.5 });
+sections.forEach((s) => spy.observe(s));
+
+// ---- Project cards: 3D tilt on hover (pointer + motion aware) ----
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+if (!reduceMotion && finePointer) {
+  document.querySelectorAll('.project-card').forEach((card) => {
+    const MAX = 8; // degrees
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform =
+        `translateY(-5px) rotateX(${(-py * MAX).toFixed(2)}deg) rotateY(${(px * MAX).toFixed(2)}deg)`;
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
+}
+
+// ---- Contact form (front-end demo) ----
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const lang = localStorage.getItem('lang') || 'en';
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+
+    const msg = {
+      empty: { en: 'Please fill in all fields.', uz: "Iltimos, barcha maydonlarni to'ldiring." },
+      bademail: { en: 'Please enter a valid email.', uz: "To'g'ri email kiriting." },
+      ok: { en: 'Thanks! Message ready (demo only).', uz: 'Rahmat! Xabar tayyor (demo).' },
+    };
+
+    if (!name || !email || !message) {
+      formStatus.textContent = msg.empty[lang]; formStatus.style.color = '#ef4444'; return;
+    }
+    if (!/.+@.+\..+/.test(email)) {
+      formStatus.textContent = msg.bademail[lang]; formStatus.style.color = '#ef4444'; return;
+    }
+    form.reset();
+    formStatus.textContent = msg.ok[lang]; formStatus.style.color = '#22c55e';
+    setTimeout(() => { formStatus.textContent = ''; }, 4000);
+  });
+}
