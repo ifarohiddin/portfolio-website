@@ -24,6 +24,13 @@ python -m http.server 8000      # so'ng http://localhost:8000
 
 (`index.html` ni to'g'ridan-to'g'ri ochsa ham bo'ladi, lekin 3D sahna uchun lokal server qulayroq.)
 
+## ☁️ Netlify'ga chiqarish
+
+1. [app.netlify.com](https://app.netlify.com) → **Add new site** → **Import an existing project** → **GitHub**.
+2. Ro'yxatdan `ifarohiddin/portfolio-website` reposini tanlang (private bo'lsa, Netlify'ga shu repoga ruxsat bering).
+3. Sozlamalar `netlify.toml` dan avtomatik olinadi (build yo'q, publish: `.`), hech narsani o'zgartirmay **Deploy** ni bosing.
+4. Shundan keyin `main` ga har bir push saytni avtomatik yangilaydi. Manzilni **Site configuration → Change site name** orqali o'zgartirish mumkin.
+
 ## 📁 Tuzilma
 
 ```text

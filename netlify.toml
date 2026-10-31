@@ -1,4 +1,16 @@
-# Netlify: serve the raw files directly — no build step.
+# Netlify: fayllar build'siz to'g'ridan-to'g'ri tarqatiladi
 [build]
   publish = "."
   command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
