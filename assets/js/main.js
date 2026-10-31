@@ -101,7 +101,15 @@ if (!reduceMotion && finePointer) {
   });
 }
 
-// ---- Contact form (front-end demo) ----
+// ---- Contact form: opens the visitor's email app with the message pre-filled ----
+const CONTACT_EMAIL = 'isomiddinovfarohiddin53@gmail.com';
+
+function buildMailto(name, email, message) {
+  const subject = `Portfolio: ${name}`;
+  const body = `${message}\n\n— ${name} (${email})`;
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -113,7 +121,7 @@ if (form) {
     const msg = {
       empty: { en: 'Please fill in all fields.', uz: "Iltimos, barcha maydonlarni to'ldiring." },
       bademail: { en: 'Please enter a valid email.', uz: "To'g'ri email kiriting." },
-      ok: { en: 'Thanks! Message ready (demo only).', uz: 'Rahmat! Xabar tayyor (demo).' },
+      ok: { en: 'Your email app is opening — press Send there to deliver the message.', uz: "Email ilovangiz ochilmoqda — xabarni yetkazish uchun u yerda «Yuborish» tugmasini bosing." },
     };
 
     if (!name || !email || !message) {
@@ -122,8 +130,9 @@ if (form) {
     if (!/.+@.+\..+/.test(email)) {
       formStatus.textContent = msg.bademail[lang]; formStatus.style.color = '#ef4444'; return;
     }
+    window.location.href = buildMailto(name, email, message);
     form.reset();
     formStatus.textContent = msg.ok[lang]; formStatus.style.color = '#22c55e';
-    setTimeout(() => { formStatus.textContent = ''; }, 4000);
+    setTimeout(() => { formStatus.textContent = ''; }, 8000);
   });
 }

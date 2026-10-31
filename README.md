@@ -43,4 +43,4 @@ python -m http.server 8000      # so'ng http://localhost:8000
 - Ranglar `assets/css/style.css` ichida.
 
 ## 📬 Aloqa
-Kontakt formasi hozircha faqat frontend (server qismi yo'q). Ishlashi uchun uni Formspree kabi xizmatga yoki o'z API'ngizga ulang. Hozircha aloqa uchun sahifadagi email va Telegram havolalaridan foydalaning.
+Kontakt formasi server talab qilmaydi: ma'lumotlar tekshirilgach, tashrif buyuruvchining email ilovasi ism, email va xabar to'ldirilgan holda ochiladi (`mailto:`), xabar u yerdan yuboriladi. Email manzili `assets/js/main.js` dagi `CONTACT_EMAIL` da. Xabarlar to'g'ridan-to'g'ri saytdan yuborilishi kerak bo'lsa, formani Formspree kabi xizmatga ulash mumkin.
